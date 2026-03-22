@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+    namespace 必须与 Mapper 接口的全限定类名完全一致，
+    MyBatis 通过 namespace + 方法名 找到对应的 SQL。
+-->
+<mapper namespace="com.repair.mapper.UserMapper">
+
+    <!--
+        ResultMap：定义数据库列名与 Java 字段的映射关系。
+        虽然 mybatis-config.xml 开启了驼峰映射（mapUnderscoreToCamelCase），
+        大多数字段可以自动映射，但显式定义 ResultMap 更清晰、更易维护。
+    -->
+    <resultMap id="UserMap" type="User">
+        <id     column="id"         property="id"/>
+        <result column="account"    property="account"/>
+        <result column="password"   property="password"/>
+        <result column="role"       property="role"/>
+        <result column="building"   property="building"/>
+        <result column="room_no"    property="roomNo"/>
+        <result column="created_at" property="createdAt"/>
+    </resultMap>
+
+    <!-- 根据账号查询用户 -->
+    <select id="selectByAccount" resultMap="UserMap">
+        SELECT *
+        FROM `user`
+        WHERE account = #{account}
+        LIMIT 1
+    </select>
+
+</mapper>

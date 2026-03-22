@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: dormitory-repair-backend
+  datasource:
+    url: jdbc:mysql://localhost:3306/dormitory_repair?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: "123456"
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      connection-timeout: 30000
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:mapper/**/*.xml
+  type-aliases-package: com.repair.entity
+
+server:
+  port: 8080
+
+# 控制台菜单（可选）；默认关闭，使用前端 + Nginx
+dormitory-repair:
+  console:
+    enabled: false

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.repair.mapper.RepairOrderMapper">
+
+    <resultMap id="OrderMap" type="RepairOrder">
+        <id     column="id"          property="id"/>
+        <result column="student_id"  property="studentId"/>
+        <result column="building"    property="building"/>
+        <result column="room_no"     property="roomNo"/>
+        <result column="device_type" property="deviceType"/>
+        <result column="description" property="description"/>
+        <result column="priority"    property="priority"/>
+        <result column="status"      property="status"/>
+        <result column="admin_id"    property="adminId"/>
+        <result column="remark"      property="remark"/>
+        <result column="rating"      property="rating"/>
+        <result column="created_at"  property="createdAt"/>
+        <result column="updated_at"  property="updatedAt"/>
+    </resultMap>
+
+    <!-- 查询某个学生的全部报修单，按创建时间倒序 -->
+    <select id="selectByStudentId" resultMap="OrderMap">
+        SELECT *
+        FROM repair_order
+        WHERE student_id = #{studentId}
+        ORDER BY created_at DESC
+    </select>
+
+    <!--
+        管理员查询所有报修单，支持可选状态筛选。
+        <if test="status != null"> 是 MyBatis 动态 SQL 标签：
+        当传入的 status 参数不为 null 时，才拼接 WHERE 条件。
+        排序：优先级高的在前，同优先级按创建时间倒序。
+    -->
+    <select id="selectAllWithFilter" resultMap="OrderMap">
+        SELECT *
+        FROM repair_order
+        <where>
+            <if test="status != null">
+                status = #{status}
+            </if>
+        </where>
+        ORDER BY priority DESC, created_at DESC
+    </select>
+
+</mapper>
