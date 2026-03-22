@@ -66,3 +66,14 @@ nginx -p "%CD%" -c nginx/nginx.conf
 ---
 
 历史文档见 `docs/` 目录（部分内容可能早于当前 Spring Boot 结构，以 `backend/` 代码为准）。
+## 6.一些图片展示
+<img width="2157" height="1340" alt="image" src="https://github.com/user-attachments/assets/1526c1d4-3fb4-4265-a4b3-16b09081d02b" />
+<img width="2158" height="1431" alt="image" src="https://github.com/user-attachments/assets/22128553-a4a4-44aa-b323-08fcdaa912e4" />
+<img width="2156" height="1313" alt="image" src="https://github.com/user-attachments/assets/1cfef03a-8b7c-460c-9b44-40bbb9d3c44a" />
+<img width="2159" height="1076" alt="image" src="https://github.com/user-attachments/assets/700a98cd-a050-426d-a92f-95f79fef3abc" />
+
+
+
+
+
+
